@@ -1,12 +1,14 @@
 import { View, Text, Image } from 'react-native'
 import React from 'react'
 
-const image = 'https://www.collinsdictionary.com/images/full/restaurant_135621509.jpg'
+export default function About(props) {
 
-const name = "aaaaaa"
-const description = "Thai • Comfort Food • $$ • 🎫 • 4⭐ (2913+)"
+    const { name, image, price, reviews, rating, categories } = props.route.params
 
-export default function About() {
+    const formattedCategories = categories.map((cat) => cat.title).join(' • ')
+
+    const description = `${formattedCategories} ${price ? ' • ' + price : ""} • 🎫 • ${rating} ⭐ (${reviews}+)`
+
     return (
         <View>
             <RestaurantImage image={image} />
